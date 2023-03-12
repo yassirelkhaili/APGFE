@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
-import { useState, createContext} from "react";
+import { useState } from "react";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import { TokenContext } from "./utils/TokenContext";
