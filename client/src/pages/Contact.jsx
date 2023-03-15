@@ -1,10 +1,7 @@
 import React, {useState} from "react";
-import "../styles/Contact.css";
-import { BsPersonCircle } from "react-icons/bs";
-import { HiOutlineMailOpen } from "react-icons/hi";
-import { BsFillTelephonePlusFill } from "react-icons/bs";
 import axios from "axios"
-
+import "../styles/StyleHome.css";
+import image from "../images/undraw_contact_us.svg"
 function Contact() {
   const [input, setinput] = useState()
   const handleChange = (e) => {
@@ -21,29 +18,24 @@ function Contact() {
   }
   return (
     <div className="contact">
-      <div
-        className="leftSide"
-        style={{ backgroundImage: "url(assets/image.jpeg)" }}
-      ></div>
-      <div className="rightSide">
-        <h1> Contactez-Nous</h1>
-        <form id="contact-form" onSubmit={handleSubmit}>
-          <label htmlFor="name"><BsPersonCircle/></label>
-          <input name="name"   placeholder="Nom Complet.." type="text" required onChange={handleChange}/>
-          <label htmlFor="email"><HiOutlineMailOpen/></label>
-          <input name="email" placeholder="Email.." type="email" required onChange={handleChange}/>
-          <label htmlFor="phone"><BsFillTelephonePlusFill/></label>
-          <input name="phone" placeholder="Téléphone.." type="text" required onChange={handleChange}/>
-          <label htmlFor="message"></label>
-          <textarea
-            rows="6"
-            placeholder="Enter votre message..."
-            name="message"
-            required
-            onChange={handleChange}></textarea>
-          <button type="submit"> Envoyer Message</button>
-        </form>
+      <div className="container">
+                <div className="main-heading">
+                    <h2>Contact Us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Provident consectetur adipis Provident.</p>
       </div>
+      <div className="content">
+                    <form action="">
+                        <input type="text" name="name" className="main-input" placeholder="Your Name" onChange={handleChange}/>
+                        <input type="email" name="email" className="main-input" placeholder="Your Email" onChange={handleChange}/>
+                        <input type="text" name="phone" className="main-input" placeholder="Your Phone Number" onChange={handleChange}/>
+                        <textarea name="message" placeholder="Your Message" className="main-input" onChange={handleChange}></textarea>
+                        <input type="submit" value="Send Message" onClick={handleSubmit}/>
+                    </form>
+                    <div className="infos">
+                        <img src={image} alt=""/>
+                    </div>
+                </div>
+            </div>
     </div>
   );
 }

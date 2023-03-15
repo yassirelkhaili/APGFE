@@ -1,83 +1,81 @@
-.main {
-    text-align: center;
-    justify-content: center;
-    display: flex; 
-    padding-top: 90px;
-    padding-bottom: 90px;
-    background-color: #0F4350;
-  }
-  .sub-main {
-    display: flex;
-    justify-content: center;
-    height: 550px;
-    width: 35%;
-    box-shadow: 8px 9px 10px 9px rgb(207, 207, 207);
-    padding-top: 30px;
-    border-radius: 60px; 
-    background-color: white;
-  }
-  .imgs {
-      padding-top: 20px;
-      justify-content: center;
-      display: flex;
-    }
-  .container-image {
-    background-color: rgb(223, 221, 221); 
-    border-radius: 150px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 115px;
-    width: 115px;
-  }
-  .profile {
-    height: 100px;
-    width: 100px;
-    border-radius: 130px;
-  } 
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
-  input{
-      width: 300px;
-      height: 50px;
-      border-radius: 60px;
-      box-shadow: inset 0px 0px 15px 0px #7c7c7c;
-      border: none;
-      outline: none;
-      background-color: #fff;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h2{
+  color: white;
+}
+
+.Auth {
+
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+select {
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  outline:0;
+  box-shadow:none;
+  border:0!important;
+  background: rgb(238, 238, 238);
+  background-image: none;
+  flex: 1;
+  padding: 0 .5em;
+  color:grey;
+  cursor:pointer;
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+}
+select::-ms-expand {
+  display: none;
+}
+select {
+  position: relative;
+  display: flex;
+  width: 15em;
+  height: 0.5em;
+  line-height: 3;
+  background: rgb(238, 238, 238);
+  overflow: hidden;
+  border-radius: .25em;
+}
+select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: rgb(238, 238, 238);
+  cursor:pointer;
+  pointer-events:none;
+  transition:.25s all ease;
+}
+select:hover::after {
+  color: #23b499;
+}
+.retour{
+  text-decoration: none;
+  padding: 10px 30px;
+  background-color: blue; 
+  color: white;
+  border: 1px solid gray;
+  border-style:inset;
+  border-radius: 12px;
+  border: 2px solid #46a28d;
+  margin-top: 10px;
   }
 
-  .email{
-      height: 25px;
-      width: 25px;
-      position: absolute;
-      padding: 14px 0 0 25px;
+.retour:hover {
+  background-color: red;
+  color:black;
   }
-
-  .name{
-      padding-left: 70px;
-      font-size: 20px;
-  }
-  .second-input{
-      padding-top: 20px;
-  }
-
-  button{
-      width: 380px;
-      height: 50px;
-      border-radius: 60px;
-      background-color: #719FD0;
-      color: white;
-      font-size: 25px;
-      border: none;
-  }
-  .login-button{
-      padding-top: 25px;
-  }
-
-  .link{
-      font-size: 25px;
-      font-weight: 400;
-  }
-   a{
-       color: #D6A330;
-   }
