@@ -14,13 +14,16 @@ function Home() {
             <div className="overlay"></div>
             <div className="text">
                 <div className="content">
-                    <h2>Hello World! <br/>
-                        We Are Kaspers, We Make ART
+                <h2>Bienvenue à AGPFE,<br/>
+                        Votre Meilleure application pour gérer votre PFE
                     </h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Rem aliquid incidunt architecto, laudantium eligendi inventore totam
-                        voluptatibus quibusdam natus exercitationem aspernatur dignissimos blanditiis,
-                        ipsum nostrum et voluptate rerum nisi nam?
+                    <p>que vous soyez étudiant, juré, encadrant vous avez peut-être eu 
+                    beaucoup de mal à gérer la gestion de votre PFE;
+                    Diminution des niveaux de performance
+                    Manque de communication
+                    Mauvais travail d'équipe
+                    Gestion du temps
+                    L'application AGPFE est faite pour vous.
                     </p>
                 </div>
             </div>

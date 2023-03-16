@@ -6,31 +6,25 @@ function Auth() {
     const [signIn, toggle] = React.useState(true);
      return(
       <div className="Auth">
-        <h2> WELCOME TO THE AGPFE Web App </h2>
+        <h2> Bienvenue Dans AGPFE App Web </h2>
          <Components.Container>
              <Components.SignUpContainer signinIn={signIn}>
                  <Components.Form>
-                     <Components.Title>Create Account</Components.Title>
-                     <select required>
-                            <option selected disabled>Choose your role</option>
-                            <option value="jury">JURY</option>
-                            <option value="Encadrement">Encadrement</option>
-                            <option value="Étudiant">Étudiant</option>
-                    </select>
-                     <Components.Input type='text' placeholder='Name' required/>
+                     <Components.Title>Créer Compte</Components.Title>
+                     <Components.Input type='text' placeholder='Identifiant' required/>
+                     <Components.Input type='text' placeholder='Nom' required/>
                      <Components.Input type='email' placeholder='Email' required/>
-                     <Components.Input type='password' placeholder='Password' required/>
+                     <Components.Input type='password' placeholder='Mot de Pass' required/>
                      <Components.Button>S'inscrire</Components.Button>
                  </Components.Form>
              </Components.SignUpContainer>
-
              <Components.SignInContainer signinIn={signIn}>
                   <Components.Form>
-                      <Components.Title>Log In</Components.Title>
+                      <Components.Title>Se Connecter</Components.Title>
                       <Components.Input type='email' placeholder='Email' required />
-                      <Components.Input type='password' placeholder='Password' required/>
+                      <Components.Input type='password' placeholder='Mot de Pass' required/>
                       <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
-                      <Components.Button>Login</Components.Button>
+                      <Components.Button>Se Connecter</Components.Button>
                   </Components.Form>
              </Components.SignInContainer>
 
