@@ -6,6 +6,7 @@ function Auth() {
     const [signIn, toggle] = React.useState(true);
      return(
       <div className="Auth">
+         <div class="overlayblk"></div>
         <h2> Bienvenue Dans AGPFE App Web </h2>
          <Components.Container>
              <Components.SignUpContainer signinIn={signIn}>
@@ -55,7 +56,7 @@ function Auth() {
              </Components.OverlayContainer>
 
          </Components.Container>
-         <Link to="/" className="retour">Go Back</Link>
+         
          </div>
      )
 }
