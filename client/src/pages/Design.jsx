@@ -4,10 +4,10 @@ import DesignImage from "../images/undraw_online_stats.svg"
 function Design() {
   return (
     <div class="design">
-            <div class="image">
+            <div className="image">
                 <img src={DesignImage} alt=""/>
             </div>
-            <div class="text">
+            <div className="text">
                 <h2>AGPFE application vous permez de : </h2>
                 <ul>
                 <li>Économisez votre temps</li>

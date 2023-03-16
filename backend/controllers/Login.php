@@ -8,10 +8,10 @@ header("Content-Type: application/json");
 $data_json = file_get_contents("php://input"); 
 $method = $_SERVER["REQUEST_METHOD"]; 
 
-switch ($method) {
+switch($method) {
     case "POST": 
-        if (!empty($data_json)) {
-            echo json_decode($data_json); 
-            break; 
-        }
+        $data = json_decode($data_json); 
+        echo json_encode($data->email); 
+        break; 
 }
+
