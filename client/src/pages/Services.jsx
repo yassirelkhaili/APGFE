@@ -6,7 +6,8 @@ function Services() {
             <div className="container">
                 <div className="main-heading">
                     <h2>Services</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Provident consectetur adipis Provident.</p>
+                    <p>AGPFE application Web joue un rôle important dans la simplification du processus de gestion de projets finaux pour les
+                    enseignants, les étudiants et les jurys.</p>
                 </div>
                 <div className="services-container">
                     <div className="srv-box">
@@ -16,9 +17,10 @@ function Services() {
                                 d="M40 392h200v72h-80v32h192v-32h-80v-72h200a24.028 24.028 0 0 0 24-24V72a24.028 24.028 0 0 0-24-24H40a24.028 24.028 0 0 0-24 24v296a24.028 24.028 0 0 0 24 24Zm8-312h416v280H48Z" />
                         </svg>
                         <div className="text">
-                            <h3>Vorem Amit Intuetive</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Provident consectetur adipis amet,
-                                consectetur adipisicing elit, Provident.</p>
+                        <h3>Gestion de projets</h3>
+                            <p>Fournissez des outils aux enseignants et aux jurys pour gérer le processus d'évaluation et de rétroaction. Cela pourrait
+                            inclure des fonctionnalités telles que la définition de critères d'évaluation, l'attribution de projets aux jurys et le
+                            suivi des progrès.</p>
                         </div>
                     </div>
                     <div className="srv-box">
@@ -39,9 +41,10 @@ function Services() {
                             <path fill="none" d="M0 0h36v36H0z" />
                         </svg>
                         <div className="text">
-                            <h3>Vorem Amit Intuetive</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Provident consectetur adipis amet,
-                                consectetur adipisicing elit, Provident.</p>
+                        <h3>Collaboration</h3>
+                            <p>Permettez aux étudiants de collaborer sur des projets avec leurs pairs ou leurs mentors. Cela pourrait impliquer des fonctionnalités telles que les forums et l'édition de documents partagés.
+
+                            </p>
                         </div>
                     </div>
                     <div className="srv-box">
@@ -53,9 +56,9 @@ function Services() {
                             <path fill="none" d="M0 0h36v36H0z" />
                         </svg>
                         <div className="text">
-                            <h3>Vorem Amit Intuetive</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Provident consectetur adipis amet,
-                                consectetur adipisicing elit, Provident.</p>
+                            <h3>Commentaires et évaluation</h3>
+                            <p>Offrez un système de commentaires et d'évaluations pour les étudiants. Cela pourrait inclure des fonctionnalités telles
+                            que la notation, les commentaires de rétroaction et les rubriques.</p>
                         </div>
                     </div>
                     <div className="srv-box">
@@ -76,9 +79,10 @@ function Services() {
                             </g>
                         </svg>
                         <div className="text">
-                            <h3>Vorem Amit Intuetive</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, Provident consectetur adipis amet,
-                                consectetur adipisicing elit, Provident.</p>
+                        <h3>Sécurité</h3>
+                            <p>Assurez la sécurité de votre application Web en mettant en place des fonctionnalités telles que l'authentification des
+                            utilisateurs, le contrôle d'accès et le chiffrement des données.
+                            </p>
                         </div>
                     </div>
                 </div>

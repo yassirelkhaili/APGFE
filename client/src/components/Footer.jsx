@@ -11,7 +11,7 @@ function Footer() {
     <div className="footer">
             <p className="footer-parag">
                 <placeholder data-i18n="footer">Tous Droits Réservés</placeholder> &copy;
-                <a href="#" className="footer-link">Med school</a>
+                <a href="#" className="footer-link">AGPFE</a>
                 <span className="this-year">{year}</span>
             </p>
         </div>
