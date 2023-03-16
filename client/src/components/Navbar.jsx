@@ -10,7 +10,7 @@ function Navbar() {
     <div className="header">
       <div className="container">
                 <a href="#" className="logo"> 
-                <img src={logo}/>
+                <img src={logo} style={{height: "120px", width:"100%"}}/>
                 </a>
                 <nav>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.17em" height="1em" className="svg-nav"

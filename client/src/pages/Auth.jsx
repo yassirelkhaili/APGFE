@@ -1,30 +1,58 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import '../styles/Auth.css'
 import * as Components from '../JS/mainAuthen.js';
+import { useContext, useState} from "react";
+import axios from "axios"; 
 function Auth() {
-    const [signIn, toggle] = React.useState(true);
+    const [signIn, toggle] = useState(true);
+    const [signupData, setsignupData] = useState([])
+    const [loginData, setloginData] = useState([])
+    const api_signup = "http://localhost/backend/controllers/Signup.php"; 
+    const api_login = "http://localhost/backend/controllers/Login.php";
+    const handleSubmitSignup = async(e) => {
+        e.preventDefault()
+        try {
+            await axios.post(api_signup, JSON.stringify(signupData))
+        } catch (err) {
+            throw new Error(err)
+        }
+    }
+    const handleSubmitLogin = async(e) => {
+        e.preventDefault()
+        try {
+            await axios.post(api_login, JSON.stringify(loginData))
+        } catch (err) {
+            throw new Error(err)
+        }
+    }
+    const handleChangeSignup = (e) => {
+        const {name,value} = e.target; 
+        setsignupData(prev=>({...prev, [name] : value}))
+    } 
+    const handleChangeLogin = (e) => {
+        const {name,value} = e.target; 
+        setloginData(prev=>({...prev, [name] : value}))
+    }
      return(
       <div className="Auth">
-         <div class="overlayblk"></div>
-        <h2> Bienvenue Dans AGPFE App Web </h2>
+         <div className="overlayblk"></div>
+        <h2> Bienvenue dans L'application De Gestion Des Projets AGPFE </h2>
          <Components.Container>
              <Components.SignUpContainer signinIn={signIn}>
-                 <Components.Form>
-                     <Components.Title>Créer Compte</Components.Title>
-                     <Components.Input type='text' placeholder='Identifiant' required/>
-                     <Components.Input type='text' placeholder='Nom' required/>
-                     <Components.Input type='email' placeholder='Email' required/>
-                     <Components.Input type='password' placeholder='Mot de Pass' required/>
+                 <Components.Form onSubmit={handleSubmitSignup}>
+                     <Components.Title>Créer un Compte</Components.Title>
+                     <Components.Input type='text' placeholder='Identifiant' name="identifiant" onChange={handleChangeSignup} required/>
+                     <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeSignup} required/>
+                     <Components.Input type='password' placeholder='Mot de Pass' name="mdp" onChange={handleChangeSignup} required/>
                      <Components.Button>S'inscrire</Components.Button>
                  </Components.Form>
              </Components.SignUpContainer>
              <Components.SignInContainer signinIn={signIn}>
-                  <Components.Form>
-                      <Components.Title>Se Connecter</Components.Title>
-                      <Components.Input type='email' placeholder='Email' required />
-                      <Components.Input type='password' placeholder='Mot de Pass' required/>
-                      <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
+                  <Components.Form onSubmit={handleSubmitLogin}>
+                      <Components.Title>Connexion</Components.Title>
+                      <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeLogin} required/>
+                      <Components.Input type='password' placeholder='Mot de Pass' name="mdp" onChange={handleChangeLogin} required/>
+                      <Components.Anchor href='#'>Mot de Passe Oublié?</Components.Anchor>
                       <Components.Button>Se Connecter</Components.Button>
                   </Components.Form>
              </Components.SignInContainer>
@@ -33,22 +61,20 @@ function Auth() {
                  <Components.Overlay signinIn={signIn}>
 
                  <Components.LeftOverlayPanel signinIn={signIn}>
-                     <Components.Title>Welcome Back!</Components.Title>
+                     <Components.Title>Content de te Revoir!</Components.Title>
                      <Components.Paragraph>
-                         To keep connected with us please login with your personal info
+                     Pour Rester en Contact avec Nous, Veuillez vous Connecter avec vos Informations Personnelles
                      </Components.Paragraph>
-                     <Components.GhostButton onClick={() => toggle(true)}>
-                         Sign In
-                     </Components.GhostButton>
+                     <Components.GhostButton onClick={() => toggle(true)}>Se Connecter</Components.GhostButton>
                      </Components.LeftOverlayPanel>
 
                      <Components.RightOverlayPanel signinIn={signIn}>
-                       <Components.Title>Hello, Friend!</Components.Title>
+                       <Components.Title>Salut!</Components.Title>
                        <Components.Paragraph>
-                           Enter Your personal details and start journey with us
+                       Entrez vos Données Personnelles et Commencez votre Parcours avec Notre Application de Gestion de Projects de Fin D'étude
                        </Components.Paragraph>
                            <Components.GhostButton onClick={() => toggle(false)}>
-                               Sigin Up
+                           S'inscrire
                            </Components.GhostButton> 
                      </Components.RightOverlayPanel>
  
