@@ -159,5 +159,5 @@ ${props => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
  `;
 
  export const alert = styled.div`
- color: ${props => props.loginResponse === "auth_failure" ? `color: red;` : `color:green;`}
+ color: red; 
  `

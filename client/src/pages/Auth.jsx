@@ -45,9 +45,9 @@ function Auth() {
                  <Components.Form onSubmit={handleSubmitSignup}>
                      <Components.Title>Créer un Compte</Components.Title>
                      <Components.Input type='text' placeholder='Identifiant' name="identifiant" onChange={handleChangeSignup} required/>
-                     <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeSignup} required/>
-                     <Components.Input type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeSignup} required/>
-                     <Components.alert loginResponse={loginResponse}>{(() => {switch(loginResponse){case "auth_failure": return "Vérifier votre Identifiant"; case "auth_success": toggle(true); case "duplicate_email": "Ce Couriel existe déja"}})()}</Components.alert>
+                     <Components.Input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" type='email' placeholder='Email' name="email" onChange={handleChangeSignup} required/>
+                     <Components.Input pattern="(?=.*[0-9])(?=.*[?!@#$%^&*])(?=.*[A-Z]).{8,64}" type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeSignup} required/>
+                     <Components.alert>{(() => {switch(loginResponse){case "auth_failure": return "Vérifier votre Identifiant"; case "auth_success": "success"; case "duplicate_email": return "Ce Couriel existe déja"}})()}</Components.alert>
                      <Components.Button>S'inscrire</Components.Button>  
                  </Components.Form>
              </Components.SignUpContainer>
