@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/Auth.css'
 import * as Components from '../js/mainAuthen.js';
-import {useContext, useState} from "react";
+import {useContext, useState, useEffect} from "react";
 import axios from "axios"; 
 import { TokenContext } from "../utils/TokenContext";
 function Auth() {
@@ -36,6 +36,9 @@ function Auth() {
         const {name,value} = e.target; 
         setloginData(prev=>({...prev, [name] : value}))
     }
+    useEffect(() => {
+        loginResponse === "auth_success" ? toggle(true) : null; 
+    }, [loginResponse])
      return(
       <div className="Auth">
          <div className="overlayblk"></div>
@@ -47,7 +50,7 @@ function Auth() {
                      <Components.Input type='text' placeholder='Identifiant' name="identifiant" onChange={handleChangeSignup} required/>
                      <Components.Input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" type='email' placeholder='Email' name="email" onChange={handleChangeSignup} required/>
                      <Components.Input pattern="(?=.*[0-9])(?=.*[?!@#$%^&*])(?=.*[A-Z]).{8,64}" type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeSignup} required/>
-                     <Components.alert>{(() => {switch(loginResponse){case "auth_failure": return "Vérifier votre Identifiant"; case "auth_success": "success"; case "duplicate_email": return "Ce Couriel existe déja"}})()}</Components.alert>
+                     <Components.alert version="red">{(() => {switch(loginResponse){case "auth_failure": return "Vérifier votre Identifiant";case "duplicate_email": return "Ce Couriel existe déja"}})()}</Components.alert>
                      <Components.Button>S'inscrire</Components.Button>  
                  </Components.Form>
              </Components.SignUpContainer>
@@ -56,6 +59,7 @@ function Auth() {
                       <Components.Title>Connexion</Components.Title>
                       <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeLogin} required/>
                       <Components.Input type='password' placeholder='Mot de Pass' name="mdp" onChange={handleChangeLogin} required/>
+                      {loginResponse === "auth_success" ? <Components.alert version="green">Enter your info to login</Components.alert> : null}
                       <Components.Anchor href='#'>Mot de Passe Oublié?</Components.Anchor>
                       <Components.Button>Se Connecter</Components.Button>
                   </Components.Form>

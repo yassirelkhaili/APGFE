@@ -159,5 +159,5 @@ ${props => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
  `;
 
  export const alert = styled.div`
- color: red; 
+ color: ${props => props.version}; 
  `
