@@ -3,7 +3,7 @@ import "../styles/StyleHome.css";
 import DesignImage from "../images/undraw_online_stats.svg"
 function Design() {
   return (
-    <div class="design">
+    <div className="design">
             <div className="image">
                 <img src={DesignImage} alt=""/>
             </div>

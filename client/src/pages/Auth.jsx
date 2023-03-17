@@ -1,20 +1,21 @@
 import React from "react";
 import '../styles/Auth.css'
 import * as Components from '../js/mainAuthen.js';
-import { useContext, useState} from "react";
+import {useContext, useState} from "react";
 import axios from "axios"; 
+import { TokenContext } from "../utils/TokenContext";
 function Auth() {
     const [signIn, toggle] = useState(true)
     const [signupData, setsignupData] = useState([])
     const [loginData, setloginData] = useState([])
-    const [loginresponse, setloginresponse] = useState([])
+    const {loginResponse, setloginResponse} = useContext(TokenContext)
     const api_signup = "http://localhost/backend/controllers/Signup.php"; 
     const api_login = "http://localhost/backend/controllers/Login.php";
     const handleSubmitSignup = async(e) => {
         e.preventDefault()
         try {
             const response = await axios.post(api_signup, JSON.stringify(signupData))
-            console.log(response.data)
+            setloginResponse(response.data)
         } catch (err) {
             throw new Error(err)
         }
@@ -46,7 +47,8 @@ function Auth() {
                      <Components.Input type='text' placeholder='Identifiant' name="identifiant" onChange={handleChangeSignup} required/>
                      <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeSignup} required/>
                      <Components.Input type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeSignup} required/>
-                     <Components.Button>S'inscrire</Components.Button>
+                     <Components.alert loginResponse={loginResponse}>{(() => {switch(loginResponse){case "auth_failure": return "Vérifier votre Identifiant"; case "auth_success": toggle(true); case "duplicate_email": "Ce Couriel existe déja"}})()}</Components.alert>
+                     <Components.Button>S'inscrire</Components.Button>  
                  </Components.Form>
              </Components.SignUpContainer>
              <Components.SignInContainer signinIn={signIn}>

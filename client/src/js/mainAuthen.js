@@ -1,5 +1,5 @@
  import styled from 'styled-components';
- 
+
  export const Container = styled.div`
  background-color: #fff;
  border-radius: 10px;
@@ -157,3 +157,7 @@ ${props => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
    letter-spacing: 0.5px;
    margin: 20px 0 30px
  `;
+
+ export const alert = styled.div`
+ color: ${props => props.loginResponse === "auth_failure" ? `color: red;` : `color:green;`}
+ `

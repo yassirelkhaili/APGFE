@@ -65,7 +65,7 @@ function Services() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid meet"
                             viewBox="0 0 24 24">
                             <g fill="none">
-                                <g fill="currentColor" clip-path="url(#svgIDa)">
+                                <g fill="currentColor" clipPath="url(#svgIDa)">
                                     <path
                                         d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.96 3.403 5.96h2.03v-2.867s-.109-3.42 3.35-3.42h5.766s3.24.052 3.24-3.148V3.202S18.28 0 11.913 0ZM8.708 1.85c.578 0 1.046.47 1.046 1.052c0 .581-.468 1.051-1.046 1.051c-.579 0-1.046-.47-1.046-1.051c0-.582.467-1.052 1.046-1.052Z" />
                                     <path

@@ -10,12 +10,12 @@ import { TokenContext } from "./utils/TokenContext";
 import About from "./pages/About";
 import Services from "./pages/Services";
 function App() {
-  const [token, settoken] = useState(null);
+  const [loginResponse, setloginResponse] = useState(null)
   return (
     <div className="App">
       <Router>
         
-        <TokenContext.Provider value={{ token, settoken }}>
+        <TokenContext.Provider value={{ loginResponse, setloginResponse }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />

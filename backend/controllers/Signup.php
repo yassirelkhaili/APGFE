@@ -14,16 +14,19 @@ switch($method) {
         $users = $stmt->fetchAll(pdo::FETCH_OBJ); 
         $input = json_decode($data_json); 
         foreach ($users as $user) {
-            if ($user->identifiant === $input->identifiant) {
+            if ($user->email === $input->email) {
+                echo json_encode("duplicate_email"); 
+                exit(); 
+            } else if ($user->identifiant === $input->identifiant) {
                 $hashedPassword = password_hash($input->password, PASSWORD_DEFAULT); 
                 $sql = "UPDATE phpcrud.users SET email=:email,password=:password WHERE identifiant=:identifiant"; 
                 $stmt = $conn->prepare($sql); 
                 $stmt->execute([":email"=>$input->email,":password"=>$input->$hashedPassword,"identifiant"=>$input->identifiant]);
-                echo "auth_succeeded"; 
+                echo json_encode("auth_success"); 
                 exit();  
             }
         }
-        echo "auth_failed"; 
+        echo json_encode("auth_failure"); 
         break; 
 }
 
