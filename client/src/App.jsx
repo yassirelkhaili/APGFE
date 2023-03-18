@@ -9,12 +9,13 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import { TokenContext } from "./utils/TokenContext";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import ForgotPasswordPage from "./pages/ForgetPassWord";
+import ResetPasswordPage from "./pages/NewPassword";
 function App() {
   const [loginResponse, setloginResponse] = useState(null)
   return (
     <div className="App">
       <Router>
-        
         <TokenContext.Provider value={{ loginResponse, setloginResponse }}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,13 +23,13 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/forgetPass" element={<ForgotPasswordPage/>} />
+            <Route path="/Reset" element={<ResetPasswordPage/>} />
             <Route element={<PrivateRoutes />}>
             <Route path="/dashboard" element={<Dashboard />}/>
             </Route>  
           </Routes>
-        </TokenContext.Provider>
-        
-        
+        </TokenContext.Provider> 
       </Router>
     </div>
   );

@@ -56,7 +56,7 @@ function Auth() {
                       <Components.Title>Connexion</Components.Title>
                       <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeLogin} required/>
                       <Components.Input type='password' placeholder='Mot de Pass' name="mdp" onChange={handleChangeLogin} required/>
-                      <Components.Anchor href='#'>Mot de Passe Oublié?</Components.Anchor>
+                      <Components.Anchor href='forgetPass'>Mot de Passe Oublié?</Components.Anchor>
                       <Components.Button>Se Connecter</Components.Button>
                   </Components.Form>
              </Components.SignInContainer>

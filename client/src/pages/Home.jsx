@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Design from "./Design";
 import About from "./About";
 import Services from "./Services";
+import GoToTop from "../components/GoToTop";
 function Home() {
   return (
     <>
@@ -32,6 +33,7 @@ function Home() {
         <Design/>
         <About/>
         <Contact/>
+        <GoToTop/>
         <Footer/>
         </>
   );
