@@ -1,21 +1,28 @@
 import React from "react";
 import '../styles/Auth.css'
+import { useNavigate } from "react-router-dom";
 import * as Components from '../js/mainAuthen.js';
 import {useContext, useState, useEffect} from "react";
 import axios from "axios"; 
+import Spinner from "react-bootstrap/Spinner"
 import { TokenContext } from "../utils/TokenContext";
 function Auth() {
     const [signIn, toggle] = useState(true)
     const [signupData, setsignupData] = useState([])
     const [loginData, setloginData] = useState([])
+    const [loading, setloading] = useState(false)
     const {loginResponse, setloginResponse} = useContext(TokenContext)
+    const [signupResponse, setsignupResponse] = useState(null)
+    const navigate = useNavigate()
     const api_signup = "http://localhost/backend/controllers/Signup.php"; 
     const api_login = "http://localhost/backend/controllers/Login.php";
     const handleSubmitSignup = async(e) => {
         e.preventDefault()
         try {
+            setloading(true)
             const response = await axios.post(api_signup, JSON.stringify(signupData))
-            setloginResponse(response.data)
+            setsignupResponse(response.data)
+            setloading(false)
         } catch (err) {
             throw new Error(err)
         }
@@ -23,7 +30,11 @@ function Auth() {
     const handleSubmitLogin = async(e) => {
         e.preventDefault()
         try {
-            await axios.post(api_login, JSON.stringify(loginData))
+            setloading(true)
+            const response = await axios.post(api_login, JSON.stringify(loginData))
+            setloginResponse(response.data)
+            setsignupResponse("auth_failure")
+            setloading(false)
         } catch (err) {
             throw new Error(err)
         }
@@ -37,37 +48,43 @@ function Auth() {
         setloginData(prev=>({...prev, [name] : value}))
     }
     useEffect(() => {
-        loginResponse === "auth_success" ? toggle(true) : null; 
+        signupResponse === "auth_success" ? toggle(true) : null
+    }, [signupResponse])
+    useEffect(() => {
+        if (loginResponse === "login_success") {
+            navigate("/admin")
+        }
     }, [loginResponse])
      return(
       <div className="Auth">
          <div className="overlayblk"></div>
-        <h2> Bienvenue dans L'application De Gestion Des Projets AGPFE </h2>
+        <h2>Bienvenue dans L'application AGPFE</h2>
          <Components.Container>
              <Components.SignUpContainer signinIn={signIn}>
                  <Components.Form onSubmit={handleSubmitSignup}>
                      <Components.Title>Créer un Compte</Components.Title>
                      <Components.Input type='text' placeholder='Identifiant' name="identifiant" onChange={handleChangeSignup} required/>
                      <Components.Input pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" type='email' placeholder='Email' name="email" onChange={handleChangeSignup} required/>
-                     <Components.Input pattern="(?=.*[0-9])(?=.*[?!@#$%^&*])(?=.*[A-Z]).{8,64}" type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeSignup} required/>
-                     <Components.alert version="red">{(() => {switch(loginResponse){case "auth_failure": return "Vérifier votre Identifiant";case "duplicate_email": return "Ce Couriel existe déja"}})()}</Components.alert>
-                     <Components.Button>S'inscrire</Components.Button>  
+                     <Components.Input pattern="(?=.*[0-9])(?=.*[?!@#$%^&*])(?=.*[A-Z]).{8,64}" type='password' placeholder='Mot de Passe' name="password" onChange={handleChangeSignup} required onInvalid={e => {
+                        e.target.setCustomValidity("Le Mot de Passe doit Comporter entre 8 et 64 Caractères et Contenir au moins une Lettre Majuscule, un Chiffre et l'un des Symboles suivants: (?!@#$%^&*)")
+                     }} onInput={e=>e.target.setCustomValidity("")}/>
+                     <Components.alert version="red">{(() => {switch(signupResponse){case "auth_failure": return "Vérifier votre Identifiant";case "duplicate_email": return "Ce Couriel existe déja";case "user_exists":return"Cette Utilisateur éxiste déja"}})()}</Components.alert>
+                     {loading ? <Spinner animation="border" variant="danger"></Spinner> : <Components.Button>S'inscrire</Components.Button>} 
                  </Components.Form>
              </Components.SignUpContainer>
              <Components.SignInContainer signinIn={signIn}>
                   <Components.Form onSubmit={handleSubmitLogin}>
                       <Components.Title>Connexion</Components.Title>
                       <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeLogin} required/>
-                      <Components.Input type='password' placeholder='Mot de Pass' name="mdp" onChange={handleChangeLogin} required/>
-                      {loginResponse === "auth_success" ? <Components.alert version="green">Enter your info to login</Components.alert> : null}
+                      <Components.Input type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeLogin} required/>
+                      {signupResponse === "auth_success" ? <Components.alert version="green">Entrez votre Email et Mot de Passe pour vous Connecter</Components.alert> : null}
+                      {loginResponse === "login_failure" ? <Components.alert version="red">Email or Password Incorrect</Components.alert> : null}
                       <Components.Anchor href='#'>Mot de Passe Oublié?</Components.Anchor>
-                      <Components.Button>Se Connecter</Components.Button>
+                      {loading ? <Spinner animation="border" variant="danger"></Spinner> : <Components.Button>Se Connecter</Components.Button>}
                   </Components.Form>
              </Components.SignInContainer>
-
              <Components.OverlayContainer signinIn={signIn}>
                  <Components.Overlay signinIn={signIn}>
-
                  <Components.LeftOverlayPanel signinIn={signIn}>
                      <Components.Title>Content de te Revoir!</Components.Title>
                      <Components.Paragraph>
@@ -75,7 +92,6 @@ function Auth() {
                      </Components.Paragraph>
                      <Components.GhostButton onClick={() => toggle(true)}>Se Connecter</Components.GhostButton>
                      </Components.LeftOverlayPanel>
-
                      <Components.RightOverlayPanel signinIn={signIn}>
                        <Components.Title>Salut!</Components.Title>
                        <Components.Paragraph>
@@ -85,12 +101,9 @@ function Auth() {
                            S'inscrire
                            </Components.GhostButton> 
                      </Components.RightOverlayPanel>
- 
                  </Components.Overlay>
              </Components.OverlayContainer>
-
          </Components.Container>
-         
          </div>
      )
 }

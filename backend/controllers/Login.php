@@ -10,8 +10,18 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 switch($method) {
     case "POST": 
-        $data = json_decode($data_json); 
-        echo json_encode($data->email); 
+        $input = json_decode($data_json); 
+        $sql = "SELECT * from phpcrud.users"; 
+        $stmt = $conn->prepare($sql); 
+        $stmt->execute(); 
+        $users = $stmt->fetchAll(pdo::FETCH_OBJ); 
+        foreach ($users as $user) {
+            if (password_verify($input->password,$user->password) && $user->email === $input->email) {
+                echo json_encode("login_success"); 
+                exit(); 
+            }
+        }
+        echo json_encode("login_failure"); 
         break; 
 }
 

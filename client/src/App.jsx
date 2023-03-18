@@ -9,6 +9,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import { TokenContext } from "./utils/TokenContext";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import Admin from "./pages/Admin";
 function App() {
   const [loginResponse, setloginResponse] = useState(null)
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/auth" element={<Auth />} />
             <Route element={<PrivateRoutes />}>
+            <Route path="/admin" element={<Admin />}/>
             <Route path="/dashboard" element={<Dashboard />}/>
             </Route>  
           </Routes>

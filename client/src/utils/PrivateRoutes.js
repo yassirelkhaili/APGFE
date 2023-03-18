@@ -3,9 +3,9 @@ import { useContext } from "react";
 import { TokenContext } from "./TokenContext";
 
 const PrivateRoutes = () => {
-  const {token} = useContext(TokenContext)
+  const {loginResponse} = useContext(TokenContext)
   return (
-    token === "success" ? <Outlet /> : <Navigate to="/auth" />
+    loginResponse === "login_success" ? <Outlet /> : <Navigate to="/auth" />
   )
 };
 
