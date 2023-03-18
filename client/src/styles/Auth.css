@@ -93,3 +93,21 @@ select:hover::after {
   background-color: red;
   color:black;
   }
+.Forget{
+  font-family: 'Work Sans', sans-serif;
+  /* background-image: url(); */
+  /* background: url('https://i.postimg.cc/TYjHtQR2/bglogin.jpg') no-repeat center; */
+  background: url('../images/bgauthen.jpg') no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  opacity: 0.9;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  
+}
+.form{
+  margin-top: 120px;
+}

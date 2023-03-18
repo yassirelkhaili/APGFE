@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 const Dashboard = () => {
+  useEffect (() => {
+    localStorage.removeItem("auth")
+    }, [])
   return (
-    <div>Connected Successfully</div>
+    <div>Welcome to the dashboard</div>
   )
 }
 
