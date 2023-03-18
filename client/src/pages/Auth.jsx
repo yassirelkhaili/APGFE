@@ -2,17 +2,16 @@ import React from "react";
 import '../styles/Auth.css'
 import { useNavigate } from "react-router-dom";
 import * as Components from '../js/mainAuthen.js';
-import {useContext, useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import axios from "axios"; 
 import Spinner from "react-bootstrap/Spinner"
-import { TokenContext } from "../utils/TokenContext";
 function Auth() {
     const [signIn, toggle] = useState(true)
     const [signupData, setsignupData] = useState([])
     const [loginData, setloginData] = useState([])
     const [loading, setloading] = useState(false)
-    const {loginResponse, setloginResponse} = useContext(TokenContext)
     const [signupResponse, setsignupResponse] = useState(null)
+    const [loginResponse, setloginResponse] = useState(null)
     const navigate = useNavigate()
     const api_signup = "http://localhost/backend/controllers/Signup.php"; 
     const api_login = "http://localhost/backend/controllers/Login.php";
@@ -51,9 +50,8 @@ function Auth() {
         signupResponse === "auth_success" ? toggle(true) : null
     }, [signupResponse])
     useEffect(() => {
-        if (loginResponse === "login_success") {
-            navigate("/admin")
-        }
+        localStorage.setItem("auth", JSON.stringify(loginResponse))
+        loginResponse === "login_success" && navigate("/admin")
     }, [loginResponse])
      return(
       <div className="Auth">

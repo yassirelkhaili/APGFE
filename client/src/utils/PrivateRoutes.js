@@ -1,9 +1,7 @@
 import { Navigate, Outlet} from "react-router-dom";
-import { useContext } from "react";
-import { TokenContext } from "./TokenContext";
 
 const PrivateRoutes = () => {
-  const {loginResponse} = useContext(TokenContext)
+  const loginResponse = JSON.parse(localStorage.getItem("auth"))
   return (
     loginResponse === "login_success" ? <Outlet /> : <Navigate to="/auth" />
   )
