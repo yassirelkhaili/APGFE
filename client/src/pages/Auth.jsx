@@ -79,9 +79,6 @@ function Auth() {
                       {loginResponse === "login_failure" ? <Components.alert version="red">Email or Password Incorrect</Components.alert> : null}
                       <Components.Anchor href='#'>Mot de Passe Oublié?</Components.Anchor>
                       {loading ? <Spinner animation="border" variant="danger"></Spinner> : <Components.Button>Se Connecter</Components.Button>}
-                      <Components.Input type='password' placeholder='Mot de Pass' name="mdp" onChange={handleChangeLogin} required/>
-                      <Components.Anchor href='forgetPass'>Mot de Passe Oublié?</Components.Anchor>
-                      <Components.Button>Se Connecter</Components.Button>
                   </Components.Form>
              </Components.SignInContainer>
              <Components.OverlayContainer signinIn={signIn}>
