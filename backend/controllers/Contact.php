@@ -1,6 +1,6 @@
 <?php 
 //API CONFIG
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: localhost");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: POST"); 
 use PHPMailer\PHPMailer\PHPMailer;
