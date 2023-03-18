@@ -8,6 +8,8 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Admin from "./pages/Admin";
+import ForgotPasswordPage from "./pages/ForgetPassWord";
+import ResetPasswordPage from "./pages/NewPassword";
 function App() {
   return (
     <div className="App">
@@ -18,6 +20,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/forgetPass" element={<ForgotPasswordPage/>} />
+            <Route path="/Reset" element={<ResetPasswordPage/>} />
             <Route element={<PrivateRoutes />}>
             <Route path="/admin" element={<Admin />}/>
             <Route path="/dashboard" element={<Dashboard />}/>
