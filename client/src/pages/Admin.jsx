@@ -9,6 +9,7 @@ const Admin = () => {
   const [users, setusers] = useState([])
   const [data, setdata] = useState([])
   const [loading, setloading] = useState(false)
+  const [refreshData, setrefreshData] = useState(false)
   const [show, setShow] = useState(false);
   const [search, setsearch] = useState("")
   const api_url = "http://localhost/backend/controllers/Admin.php"
@@ -22,7 +23,7 @@ const Admin = () => {
     setloading(true)
     fetchData()
     setloading(false)
-  }, [users])
+  }, [refreshData])
   const handleChange = (e) => {
 setdata(prev=>({...prev, [e.target.name]: e.target.value}))
   }
@@ -35,7 +36,18 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
     }
     setloading(false)
     setShow(false)
+    setrefreshData(!refreshData)
   }
+  const handleDelete = async(id) => {
+    setloading(true)
+    try {
+      await axios.delete(api_url + "/" + id)
+    } catch (err) {
+      throw new Error(err)
+    }
+    setloading(false)
+    setrefreshData(!refreshData)
+  } 
   return (
     <div className='container-fluid'>
       <div className='row p-3 input-group'>
@@ -74,7 +86,7 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
                   <td id="role">{role}</td>
                   <td id="action" className="actions">
                     <button className="btn btn-warning" id='edit'>Edit</button>
-                    <button className="btn btn-danger" id='delete'>Delete</button>
+                    <button className="btn btn-danger" id='delete' onClick={() => handleDelete(id)}>Delete</button>
                   </td>
                 </tr>
               );
