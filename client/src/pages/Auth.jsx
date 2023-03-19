@@ -12,6 +12,7 @@ function Auth() {
     const [loading, setloading] = useState(false)
     const [signupResponse, setsignupResponse] = useState(null)
     const [loginResponse, setloginResponse] = useState(null)
+    const [Errormessage, setErrormessage] = useState(false)
     const navigate = useNavigate()
     const api_signup = "http://localhost/backend/controllers/Signup.php"; 
     const api_login = "http://localhost/backend/controllers/Login.php";
@@ -51,12 +52,17 @@ function Auth() {
     }, [signupResponse])
     useEffect(() => {
         if (loginResponse) {
-            if (loginResponse.admin === true) {
-                localStorage.setItem("auth", JSON.stringify(loginResponse.message))
-                navigate("/admin")
-            } else {
-                localStorage.setItem("auth", JSON.stringify(loginResponse.message))
-                navigate("/dashboard")
+            if (loginResponse.message === "login_success") {
+                if (loginResponse.admin === true) {
+                    localStorage.setItem("auth", JSON.stringify(loginResponse.message))
+                    navigate("/admin")
+                } else {
+                    localStorage.setItem("auth", JSON.stringify(loginResponse.message))
+                    navigate("/dashboard")
+                }
+            }
+            else {
+                setErrormessage(true)
             }
         }
     }, [loginResponse])
@@ -83,7 +89,7 @@ function Auth() {
                       <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeLogin} required/>
                       <Components.Input type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeLogin} required/>
                       {signupResponse === "auth_success" ? <Components.alert version="green">Entrez votre Email et Mot de Passe pour vous Connecter</Components.alert> : null}
-                      {loginResponse === "login_failure" ? <Components.alert version="red">Email or Password Incorrect</Components.alert> : null}
+                      {Errormessage === true ? <Components.alert version="red">Email ou mot de passe incorrect</Components.alert> : null}
                       <Components.Anchor href='#'>Mot de Passe Oublié?</Components.Anchor>
                       {loading ? <Spinner animation="border" variant="danger"></Spinner> : <Components.Button>Se Connecter</Components.Button>}
                   </Components.Form>
