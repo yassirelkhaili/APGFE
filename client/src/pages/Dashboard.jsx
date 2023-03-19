@@ -1,9 +1,6 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 const Dashboard = () => {
-  useEffect (() => {
-    localStorage.removeItem("auth")
-    }, [])
   return (
     <div>Welcome to the dashboard</div>
   )

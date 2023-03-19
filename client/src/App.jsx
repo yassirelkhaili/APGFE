@@ -10,6 +10,8 @@ import Services from "./pages/Services";
 import Admin from "./pages/Admin";
 import ForgotPasswordPage from "./pages/ForgetPassWord";
 import ResetPasswordPage from "./pages/NewPassword";
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap"
 function App() {
   return (
     <div className="App">
