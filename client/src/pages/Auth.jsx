@@ -50,8 +50,15 @@ function Auth() {
         signupResponse === "auth_success" ? toggle(true) : null
     }, [signupResponse])
     useEffect(() => {
-        localStorage.setItem("auth", JSON.stringify(loginResponse))
-        loginResponse === "login_success" && navigate("/admin")
+        if (loginResponse) {
+            if (loginResponse.admin === true) {
+                localStorage.setItem("auth", JSON.stringify(loginResponse.message))
+                navigate("/admin")
+            } else {
+                localStorage.setItem("auth", JSON.stringify(loginResponse.message))
+                navigate("/dashboard")
+            }
+        }
     }, [loginResponse])
      return(
       <div className="Auth">
