@@ -22,7 +22,7 @@ const Admin = () => {
     setloading(true)
     fetchData()
     setloading(false)
-  }, [users])
+  }, [])
   const handleChange = (e) => {
 setdata(prev=>({...prev, [e.target.name]: e.target.value}))
   }

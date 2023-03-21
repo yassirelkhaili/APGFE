@@ -1,8 +1,9 @@
 <?php 
 //API CONFIG
-header("Access-Control-Allow-Origin: localhost");
+header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: POST"); 
+header("Content-Type: application/json"); 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
