@@ -9,7 +9,6 @@ const Admin = () => {
   const [users, setusers] = useState([])
   const [data, setdata] = useState([])
   const [loading, setloading] = useState(false)
-  const [refreshData, setrefreshData] = useState(false)
   const [show, setShow] = useState(false);
   const [search, setsearch] = useState("")
   const api_url = "http://localhost/backend/controllers/Admin.php"
@@ -23,7 +22,7 @@ const Admin = () => {
     setloading(true)
     fetchData()
     setloading(false)
-  }, [refreshData])
+  }, [users])
   const handleChange = (e) => {
 setdata(prev=>({...prev, [e.target.name]: e.target.value}))
   }
@@ -36,7 +35,6 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
     }
     setloading(false)
     setShow(false)
-    setrefreshData(!refreshData)
   }
   const handleDelete = async(id) => {
     setloading(true)
@@ -46,7 +44,6 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
       throw new Error(err)
     }
     setloading(false)
-    setrefreshData(!refreshData)
   } 
   return (
     <div className='container-fluid'>
@@ -60,7 +57,7 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
               <th scope="col" id="id" data-atr="id">id</th>
               <th scope="col" id="fname">Nom</th>
               <th scope="col" id="lname">Prenom:</th>
-              <th scope="col" id="age">email:</th>
+              <th scope="col" id="age">Email:</th>
               <th scope="col" id="pos">Role:</th>
               <th scope="col" id="action" data-atr="actions">Actions:</th>
             </tr>
