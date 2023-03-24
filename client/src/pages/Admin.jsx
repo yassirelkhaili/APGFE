@@ -35,6 +35,7 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
     }
     setloading(false)
     setShow(false)
+    fetchData()
   }
   const handleDelete = async(id) => {
     setloading(true)
@@ -44,7 +45,18 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
       throw new Error(err)
     }
     setloading(false)
+    fetchData()
   } 
+  const handleEdit = async(id) => {
+    setloading(true)
+    try {
+      await axios.put(api_url + "/" + id, data) 
+    } catch (err) {
+      throw new Error(err)
+    }
+    setloading(false)
+    fetchData()
+  }
   return (
     <div className='container-fluid'>
       <div className='row p-3 input-group'>
@@ -82,7 +94,7 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
                   <td id="email">{email}</td>
                   <td id="role">{role}</td>
                   <td id="action" className="actions">
-                    <button className="btn btn-warning" id='edit'>Edit</button>
+                    <button className="btn btn-warning" id='edit' onClick={() => setShow(true)}>Edit</button>
                     <button className="btn btn-danger" id='delete' onClick={() => handleDelete(id)}>Delete</button>
                   </td>
                 </tr>
