@@ -54,10 +54,10 @@ function Auth() {
         if (loginResponse) {
             if (loginResponse.message === "login_success") {
                 if (loginResponse.admin === true) {
-                    localStorage.setItem("auth", JSON.stringify(loginResponse.message))
+                    sessionStorage.setItem("auth", JSON.stringify(loginResponse.message))
                     navigate("/admin")
                 } else {
-                    localStorage.setItem("auth", JSON.stringify(loginResponse.message))
+                    sessionStorage.setItem("auth", JSON.stringify(loginResponse.message))
                     navigate("/dashboard")
                 }
             }
