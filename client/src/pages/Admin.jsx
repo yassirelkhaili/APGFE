@@ -1,10 +1,11 @@
 import React, { useEffect, useState} from 'react'
 import axios from "axios"
-import "../styles/admin.css"
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/esm/Spinner'
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import "../styles/admin.css"
+
 const Admin = () => { 
   const [users, setusers] = useState([])
   const [data, setdata] = useState([])
@@ -26,7 +27,7 @@ const Admin = () => {
   const handleChange = (e) => {
 setdata(prev=>({...prev, [e.target.name]: e.target.value}))
   }
-  const handleClick = () => {
+  const handleSubmit = () => {
     setloading(true)
     try {
       axios.post(api_url, JSON.stringify(data))
@@ -104,31 +105,33 @@ setdata(prev=>({...prev, [e.target.name]: e.target.value}))
           {loading && <Spinner animation="border" variant="warning" style={{marginLeft:"45vw"}}></Spinner>}
         </table>
         <Modal show={show} onHide={() => setShow(false)} backdrop="static" keyboard={false}>
+        <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
           <Modal.Title>Veuillez saisir les Données</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
       <Form.Group className="mb-3">
         <Form.Label>Nom:</Form.Label>
-        <Form.Control type="email" placeholder="Nom" name="nom" onChange={handleChange} required/>
+        <Form.Control type="text" pattern='.{3,}' placeholder="Nom" name="nom" onChange={handleChange} onInvalid={(e) => e.target.setCustomValidity("Le Nom doit contenir au moins 3 Caractères")} onInput={e=>e.target.setCustomValidity("")} required/>
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Prenom:</Form.Label>
+        <Form.Control type="text" pattern='.{3,}' placeholder="Prenom" name="prenom" onChange={handleChange} onInvalid={(e) => e.target.setCustomValidity("Le Prenom doit contenir au moins 3 Caractères")} onInput={e=>{e.target.setCustomValidity("")}} required/>
       </Form.Group>
       <Form.Group>
-        <Form.Label>Prenom:</Form.Label>
-        <Form.Control type="text" placeholder="Prenom" name="prenom" onChange={handleChange} required/>
-      </Form.Group>
-    </Form>
-        </Modal.Body>
       <Form.Label className='select-label'>Role:</Form.Label>
       <Form.Select className='select' name="role" required onChange={handleChange}>
       <option value="étudiant">Étudiant</option>
       <option value="encadrant">Encadrant</option>
       <option value="jury">Jury</option>
     </Form.Select>
+    </Form.Group>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShow(false)}>Fermer</Button>
-          {loading ? <Spinner animation="border" variant="danger"></Spinner> : <Button variant="primary" onClick={handleClick}>Ajouter L'utilisateur</Button>}
+          {loading ? <Spinner animation="border" variant="danger"></Spinner> : <Button type='submit' variant="primary">Ajouter L'utilisateur</Button>}
         </Modal.Footer>
+        </Form>
       </Modal>
     </div>
   )

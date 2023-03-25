@@ -1,12 +1,16 @@
 import React from 'react'
-import Form from 'react-bootstrap/Form';
 import Button  from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 const Dashboard = () => {
   return (
     <div>
       <Form>
-        <input className='myinput' required></input>
-        <Button>Submit</Button>
+        <Form.Group>
+          <Form.Label>FirstName:</Form.Label>
+          <Form.Control type="text" placeholder='Firstname' required/>
+        </Form.Group>
+        <Button type='Submit'>Submit</Button>
       </Form>
       </div>
   )
