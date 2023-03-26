@@ -27,17 +27,17 @@ function Navbar() {
                         offset={-100} duration={500} onClick={closeMenu}>À Propos</Link></li>
                         <li><Link to="contact" spy={true} smooth={true}
                         offset={-100} duration={500} onClick={closeMenu}>Contact</Link></li>
+                       
                     </ul>
                 </nav>
                 <div className="authent">
                     <div className="signup">
+                    <Href to="/admin" className="signupButton">Espace-Admin</Href>
                         <Href to="/auth" className="signupButton">Access</Href>
                     </div>
                 </div>
             </div>
     </div>
-      
   );
 }
-
 export default Navbar;

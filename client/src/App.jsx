@@ -11,6 +11,12 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import ForgotPasswordPage from "./pages/ForgetPassWord";
 import ResetPasswordPage from "./pages/NewPassword";
+import NavbarEtud from "./Espace_Etudiant/NavbarEtud";
+import Bord from "./Espace_Etudiant/Bord";
+import Bord2 from "./Espace_Etudiant/Bord2";
+import Profile from "./Espace_Etudiant/Profile";
+import Attestation from "./Espace_Etudiant/Attestation";
+import Admin from "./Espace_Admin/Admin";
 function App() {
   const [loginResponse, setloginResponse] = useState(null)
   return (
@@ -25,6 +31,11 @@ function App() {
             <Route path="/auth" element={<Auth />} />
             <Route path="/forgetPass" element={<ForgotPasswordPage/>} />
             <Route path="/Reset" element={<ResetPasswordPage/>} />
+            <Route path="/navbar" element={<Bord/>} />
+            <Route path="/bord2" element={<Bord2/>} />
+            <Route path="/profile" element={<Profile/>} />
+            <Route path="/attestation" element={<Attestation/>} />
+            <Route path="/admin" element={<Admin/>} />
             <Route element={<PrivateRoutes />}>
             <Route path="/dashboard" element={<Dashboard />}/>
             </Route>  

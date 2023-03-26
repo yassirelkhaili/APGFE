@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axios from "axios"
+import axios from "axios";
 import "../styles/StyleHome.css";
 import image from "../images/undraw_contact_us.svg"
 function Contact() {

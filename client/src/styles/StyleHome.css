@@ -717,6 +717,7 @@ div.footer {
     background-color: var(--header-foter-color);
     color: white;
     padding: 20px 0px;
+    display: block;
 }
 
 a.footer-link {

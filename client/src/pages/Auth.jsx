@@ -5,7 +5,7 @@ import {useContext, useState} from "react";
 import axios from "axios"; 
 import { TokenContext } from "../utils/TokenContext";
 function Auth() {
-    const [signIn, toggle] = useState(true)
+  /*  const [signIn, toggle] = useState(true)
     const [signupData, setsignupData] = useState([])
     const [loginData, setloginData] = useState([])
     const {loginResponse, setloginResponse} = useContext(TokenContext)
@@ -35,6 +35,23 @@ function Auth() {
     const handleChangeLogin = (e) => {
         const {name,value} = e.target; 
         setloginData(prev=>({...prev, [name] : value}))
+    }*/
+    const [data,setData]=useState({
+        identifiant:'',
+        email:'',
+        password:''
+    })
+    const handelChangeRegister=(e)=>{
+        setData({...data,[e.target.name]:e.target.value});
+        console.log(data);
+    }
+    const submitForm=(e)=>{
+        e.preventDefault();
+       const sendData={
+            identifiant:data.identifiant,
+            email:data.email,
+            password:data.password
+        }
     }
      return(
       <div className="Auth">
@@ -42,11 +59,11 @@ function Auth() {
         <h2> Bienvenue dans L'application De Gestion Des Projets AGPFE </h2>
          <Components.Container>
              <Components.SignUpContainer signinIn={signIn}>
-                 <Components.Form onSubmit={handleSubmitSignup}>
+                 <Components.Form onSubmit={submitForm}>
                      <Components.Title>Créer un Compte</Components.Title>
-                     <Components.Input type='text' placeholder='Identifiant' name="identifiant" onChange={handleChangeSignup} required/>
-                     <Components.Input type='email' placeholder='Email' name="email" onChange={handleChangeSignup} required/>
-                     <Components.Input type='password' placeholder='Mot de Pass' name="password" onChange={handleChangeSignup} required/>
+                     <Components.Input type='text' placeholder='Identifiant' name="identifiant" value={data.identifiant} onChange={handelChangeRegister} required/>
+                     <Components.Input type='email' placeholder='Email' name="email" value={data.email} onChange={handelChangeRegister} required/>
+                     <Components.Input type='password' placeholder='Mot de Pass' value={data.password} name="password" onChange={handelChangeRegister} required/>
                      <Components.alert loginResponse={loginResponse}>{(() => {switch(loginResponse){case "auth_failure": return "Vérifier votre Identifiant"; case "auth_success": toggle(true); case "duplicate_email": "Ce Couriel existe déja"}})()}</Components.alert>
                      <Components.Button>S'inscrire</Components.Button>  
                  </Components.Form>

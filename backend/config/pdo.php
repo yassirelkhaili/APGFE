@@ -2,7 +2,7 @@
 //database connection
 $dsn = 'mysql:host=localhost;port=3301;dbname=phpcrud';
 $username = 'root';
-$password = '';
+$password = 'root';
 
 try {
     $conn = new PDO($dsn, $username, $password);

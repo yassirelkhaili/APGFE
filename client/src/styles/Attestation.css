@@ -1,0 +1,120 @@
+/* Start Attestation */
+.attestaion{
+    background-color: #b6bef4;
+}
+.encad {
+    background-color: #e9ecef;
+}
+.plceHolcontainer {
+    display: flex;
+    align-items: center;
+    line-height: 3rem;
+    font-weight: 700;
+    min-height: 110px;
+}
+.cert {
+    border: 15px solid #0072c6;
+    border-right: 15px solid #0894fb;
+    border-left: 15px solid #0894fb;
+    width: 100%;
+    height: 100vh;
+    font-family: arial;
+    color: #383737;
+    background-color: #b6bef4;
+} 
+.cert .tr_logo {
+    position: relative;
+}
+.crt_logo {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.crt_logo img {
+    width: 7rem;
+    margin: 0 auto;
+}
+
+.crt_title {
+    font-size: 2.2rem;
+    letter-spacing: 0.10rem;
+    color: var(--main-color-one);
+    margin-top: 6rem;
+}
+
+.crt_user {
+    display: inline-block;
+    width: 80%;
+    padding: 5px 25px;
+     margin-bottom: 0px; 
+    padding-bottom: 0px;
+    font-family: "Satisfy", cursive;
+    font-size: 2.6rem;
+    border-bottom: 1px dashed var(--main-color-transp-two);
+}
+.colorName {
+    color: var(--main-color-two);
+}
+
+.projectNom {
+    color: #383737;
+    margin-bottom: 0.5rem;
+}
+
+.colorGrey {
+    color: grey;
+}
+
+.certSign {
+    width: 200px;
+}
+
+h3.encadr_name {
+    margin-bottom: 0.5rem;
+}
+.tfoot_jury {
+    position: relative;
+    outline: 1px solid black;
+    height: 10rem;
+}
+.tfoot_jury .one {
+    border-bottom: 1px solid black;
+}
+.tfoot_jury .row_jury {
+    display: flex;
+    padding: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: black;
+    justify-content: space-between;
+}
+.tfoot_jury .two {
+    height: 73%;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0px;
+
+}
+.tfoot_jury .jury_content-one {
+    max-width: 14rem;
+    width: 100%;
+    align-self: center;
+    line-height: 1.7;
+    padding-left: 10px;
+}
+.jury_content-one .dotimoji {
+    font-size: 0.70rem;
+}
+.tfoot_jury .jury_content-two {
+    max-width: 35.8rem;
+    width: 100%;
+}
+.tfoot_jury .jury_content-three {
+    max-width: 10rem;
+    width: 100%;
+    padding: 0 8px;
+    color: green;
+    align-self: center;
+    text-align: end;
+    font-size: 2.2rem;
+}

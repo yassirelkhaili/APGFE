@@ -1,0 +1,114 @@
+/* Start Progress */
+.progress {
+    min-height: 13rem;
+}
+.bord{
+    font-family: 'Work Sans', sans-serif;
+    background-color: #b6bef4;
+        scroll-behavior: smooth;
+}
+.progress p.prg {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 2.8rem;
+}
+.progress .prg {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+.progress .prg div p {
+    position: relative;
+    background-color: var(--header-foter-color);
+    color: white;
+    padding: 15px 18px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+.progress .prg div p:hover {
+    background-color: var(--main-color-two);
+}
+.progress .prg div p.active {
+    background-color: var(--main-color-one);
+}
+.progress .prg div p.active::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0.8rem);
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid var(--main-color-one);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+}
+/* End Progress */
+
+/* Start Form */
+.formstudent {
+    min-height: 27rem;
+}
+.container-form {
+    max-width: 650px;
+    width: 100%;
+    margin: 25px auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+h1 {
+    color: #4285F4;
+    margin-bottom: 15px;
+}
+
+h1 span {
+    font-size: 13px;
+    color: #999;
+}
+.form-item {
+    margin-bottom: 10px;
+}
+
+.form-item label {
+    margin-bottom: 5px;
+    display: block;
+    font-weight: 600;
+}
+
+.form-item input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.form-item input[type=submit] {
+    background-color: var(--main-color-one);
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+    display: inline-block;
+    border-radius: 28px;
+    font-size: 1.35rem;
+    font-weight: bold;
+    padding: 15px 25px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px black;
+    
+}
+.form-item input[type=submit]:hover {
+    background-color: var(--main-color-two);
+}
+.formstudent .form-item .main-input {
+    height: 4rem; 
+    width: 100%;
+}
+.formstudent {
+    margin-bottom: 4rem;
+}
+/* End Form */

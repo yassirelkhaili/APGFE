@@ -1,0 +1,8 @@
+/* Start Profile Infos */
+.infostudent {
+    min-height: 66.5rem;
+}
+.infostudent .container-infos h1 {
+    color: var(--main-color-one);
+}
+/* End Profile Infos */

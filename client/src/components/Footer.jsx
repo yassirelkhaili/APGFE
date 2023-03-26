@@ -1,9 +1,5 @@
 import React from "react";
 import "../styles/StyleHome.css";
-import { BsFacebook } from "react-icons/bs";
-import { BsLinkedin } from "react-icons/bs";
-import { FaTwitterSquare } from "react-icons/fa";
-import { BsInstagram } from "react-icons/bs";
 function Footer() {
   const today = new Date();
   const year = today.getFullYear();
