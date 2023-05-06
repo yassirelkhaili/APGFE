@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import * as Components from '../js/mainAuthen.js';
 import '../styles/Auth.css'
 const ForgotPasswordPage = ()=>{
-
   return (
     <section className="Forget ">
       <div className="overlayblk"></div>

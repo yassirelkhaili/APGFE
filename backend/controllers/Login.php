@@ -1,4 +1,5 @@
 <?php 
+declare(strict_types = 1); 
 require "../config/pdo.php"; 
 header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Headers: *");
@@ -9,7 +10,20 @@ $method = $_SERVER["REQUEST_METHOD"];
 class Response {
     public $message; 
     public $admin; 
+    public function __construct(string $message, bool $admin)
+    {
+        $this->message = $message; 
+        $this->admin = $admin;
     }
+    }
+function handleResponse (string $message, bool $admin) {
+    try {
+        $response = new Response($message, $admin); 
+    } catch (TypeError $e) {
+        echo "Error: " . $e->getMessage(); 
+    }
+    echo json_encode($response);
+}
 switch($method) {
     case "POST": 
         $input = json_decode($data_json); 
@@ -19,10 +33,7 @@ switch($method) {
         $users = $stmt->fetchAll(pdo::FETCH_OBJ);  
         foreach ($users as $user) {
             if (password_verify($input->password,$user->password) && $user->email === $input->email) {
-                $response = new Response; 
-                $response->message = "login_success"; 
-                $response->admin = false; 
-                echo json_encode($response);
+                handleResponse("login_success", false); 
                 exit(); 
             }
         }
@@ -32,17 +43,11 @@ switch($method) {
         $admins = $stmt->fetchAll(pdo::FETCH_OBJ);
         foreach ($admins as $admin) {
             if ($input->email === $admin->email && $input->password === $admin->admin_key) {
-                $response = new Response; 
-                $response->message = "login_success"; 
-                $response->admin = true; 
-                echo json_encode($response); 
+                handleResponse("login_success", true); 
                 exit(); 
             }
         }
-        $response = new Response; 
-        $response->message = "login_failure"; 
-        $response->admin = false; 
-        echo json_encode($response);
+        handleResponse("login_failure", false); 
         break;
 }
 
